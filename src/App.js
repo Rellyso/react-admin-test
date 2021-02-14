@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { Admin, Resource } from 'react-admin'
+import jsonServerProvider from 'ra-data-json-server'
+import { makeStyles } from '@material-ui/core/styles'
 
-function App() {
+// pages
+import { CreatePessoa, EditPessoa, ListPessoa } from './pages/pessoa'
+import { CreateTipo, EditTipo, ListTipo } from './pages/tipo'
+import { CreatePost, ListPosts, EditPost } from './pages/posts'
+
+// components
+import Menu from './components/Menu'
+import MyLayout from './components/Layout'
+
+// icons
+import PersonIcon from '@material-ui/icons/Person';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import LocalPostOfficeIcon from '@material-ui/icons/LocalPostOffice';
+
+// styles
+const useStyles = makeStyles({
+  resource: {
+    padding: '8px 16px',
+  }
+})
+
+const dataProvider = jsonServerProvider("http://localhost:5000")
+
+const App = () => {
+  const classes = useStyles()
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Admin layout={MyLayout} dataProvider={dataProvider} menu={Menu}>
+      <Resource className="resource" name="pessoa" list={ListPessoa} edit={EditPessoa} create={CreatePessoa} icon={PersonIcon} />
 
-export default App;
+      <Resource className={classes.resource} name="tipo" list={ListTipo} edit={EditTipo} create={CreateTipo} icon={BarChartIcon} />
+
+      <Resource className={classes.resource} name="posts" list={ListPosts} edit={EditPost} create={CreatePost} icon={LocalPostOfficeIcon} />
+
+    </Admin>
+)
+} 
+
+export default App
