@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { CreatePessoa, EditPessoa, ListPessoa } from './pages/pessoa'
 import { CreateTipo, EditTipo, ListTipo } from './pages/tipo'
 import { CreatePost, ListPosts, EditPost } from './pages/posts'
+import Dashboard from './pages/Dashboard'
 
 // components
 import Menu from './components/Menu'
@@ -29,7 +30,7 @@ const App = () => {
   const classes = useStyles()
   
   return (
-    <Admin layout={MyLayout} dataProvider={dataProvider} menu={Menu}>
+    <Admin layout={MyLayout} dataProvider={dataProvider} menu={Menu} dashboard={Dashboard}>
       <Resource className="resource" name="pessoa" list={ListPessoa} edit={EditPessoa} create={CreatePessoa} icon={PersonIcon} />
 
       <Resource className={classes.resource} name="tipo" list={ListTipo} edit={EditTipo} create={CreateTipo} icon={BarChartIcon} />
