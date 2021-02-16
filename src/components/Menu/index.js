@@ -2,19 +2,23 @@ import { useSelector } from 'react-redux';
 import { useMediaQuery } from '@material-ui/core';
 import { DashboardMenuItem, MenuItemLink, getResources } from 'react-admin';
 import DefaultIcon from '@material-ui/icons/ViewList';
-import LabelIcon from '@material-ui/icons/Label';
+import WebIcon from '@material-ui/icons/Web';
 
 const Menu = ({ onMenuClick, logout }) => {
     const isXSmall = useMediaQuery(theme => theme.breakpoints.down('xs'));
     const open = useSelector(state => state.admin.ui.sidebarOpen);
     const resources = useSelector(getResources);
     return (
-        <div>
+        <>
             <DashboardMenuItem onClick={onMenuClick} sidebarIsOpen={open} style={{ height: '60px' }} />
+            
             {resources.map(resource => (
                 <MenuItemLink
                     style={{
                         height: '60px'
+                    }}
+                    activeStyle={{
+                        backgroundColor: '#eee'
                     }}
                     key={resource.name}
                     to={`/${resource.name}`}
@@ -29,18 +33,24 @@ const Menu = ({ onMenuClick, logout }) => {
                     sidebarIsOpen={open}
                 />
             ))}
+
             <MenuItemLink
                 style={{
-                    height: '60px'
+                    height: '60px',
+                    backgroundColor: '#ccdbfd'
                 }}
-                to="/custom-route"
-                primaryText="Miscellaneous"
-                leftIcon={<LabelIcon />}
+                activeStyle={{
+                    backgroundColor: '#eee'
+                }}
+                to="/"
+                primaryText="Visitar website"
+                leftIcon={<WebIcon color="primary" />}
                 onClick={onMenuClick}
                 sidebarIsOpen={open}
             />
+
             {isXSmall && logout}
-        </div>
+        </>
     );
 };
 
