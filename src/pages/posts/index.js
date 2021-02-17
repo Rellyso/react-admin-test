@@ -41,8 +41,6 @@ export const ListPosts = props => {
 }
 
 export const CreatePost = props => {
-    const classes = useStyles()
-
     return (
         <Create {...props} title="Novo Post" >
             <SimpleForm>
