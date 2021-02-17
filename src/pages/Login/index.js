@@ -1,21 +1,16 @@
 import { Login } from 'react-admin'
-import { useState, useEffect } from 'react'
-import api from '../../api'
+import { useContext } from 'react'
+
+import { Context } from '../../Context/AuthContext'
+
 
 const MyLogin = () => {
-    const [users, setUsers] = useState([])
-    
-    useEffect(async ()=> {
-        const response = await api.get('/users')
+    const { authenticated } = useContext(Context)
 
-        setUsers(response.data)
-
-    },[])
-    
-    console.log(users)
+    console.debug('Login', authenticated)
 
     return (
-        <Login />
+        <Login  />
     )
 }
 
