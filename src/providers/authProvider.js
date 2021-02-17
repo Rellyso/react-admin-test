@@ -3,9 +3,6 @@ export default {
         localStorage.setItem('username', username);
         // accept all username/password combinations
 
-        console.log(users[0].email)
-
-        // if (username === users[0].email)
         return Promise.resolve();
     },
     // called when the user clicks on the logout button
