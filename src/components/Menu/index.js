@@ -10,15 +10,30 @@ const Menu = ({ onMenuClick, logout }) => {
     const resources = useSelector(getResources);
     return (
         <>
-            <DashboardMenuItem onClick={onMenuClick} sidebarIsOpen={open} style={{ height: '60px' }} />
+            <DashboardMenuItem 
+                onClick={onMenuClick} 
+                sidebarIsOpen={open} 
+                style={{
+                    height: '60px',
+                    fontWeight: 'normal',
+                    transition: 'all .4s ease'
+                }}
+                activeStyle={{
+                    backgroundColor: '#eee',
+                    fontWeight: 'bold',
+                }}
+            />
             
             {resources.map(resource => (
                 <MenuItemLink
                     style={{
-                        height: '60px'
+                        height: '60px',
+                        fontWeight: 'normal',
+                        transition: 'all .4s ease'
                     }}
                     activeStyle={{
-                        backgroundColor: '#eee'
+                        backgroundColor: '#eee',
+                        fontWeight: 'bold',
                     }}
                     key={resource.name}
                     to={`/${resource.name}`}
