@@ -1,12 +1,14 @@
 import { Admin, Resource } from 'react-admin'
 import jsonServerProvider from 'ra-data-json-server'
 import { makeStyles } from '@material-ui/core/styles'
+import authProvider from './providers/authProvider'
 
 // pages
 import { CreatePessoa, EditPessoa, ListPessoa } from './pages/pessoa'
 import { CreateTipo, EditTipo, ListTipo } from './pages/tipo'
 import { CreatePost, ListPosts, EditPost } from './pages/posts'
 import Dashboard from './pages/Dashboard'
+import Login from './pages/Login'
 
 // components
 import Menu from './components/Menu'
@@ -30,7 +32,7 @@ const App = () => {
   const classes = useStyles()
   
   return (
-    <Admin layout={MyLayout} dataProvider={dataProvider} menu={Menu} dashboard={Dashboard}>
+    <Admin layout={MyLayout} dataProvider={dataProvider} authProvider={authProvider} menu={Menu} dashboard={Dashboard} loginPage={Login} >
       <Resource className="resource" name="pessoa" list={ListPessoa} edit={EditPessoa} create={CreatePessoa} icon={PersonIcon} />
 
       <Resource className={classes.resource} name="tipo" list={ListTipo} edit={EditTipo} create={CreateTipo} icon={BarChartIcon} />
