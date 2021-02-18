@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from '@material-ui/core';
 import { DashboardMenuItem, MenuItemLink, getResources } from 'react-admin';
+
+// icons
 import DefaultIcon from '@material-ui/icons/ViewList';
 import WebIcon from '@material-ui/icons/Web';
 
@@ -22,6 +24,7 @@ const Menu = ({ onMenuClick, logout }) => {
                     backgroundColor: '#eee',
                     fontWeight: 'bold',
                 }}
+                leftIcon={}
             />
             
             {resources.map(resource => (
