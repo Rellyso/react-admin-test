@@ -33,7 +33,7 @@ const Home = () => {
   
   return (
     <Admin layout={MyLayout} dataProvider={dataProvider} authProvider={authProvider} menu={Menu} dashboard={Dashboard} loginPage={Login} >
-      <Resource className="resource" name="pessoa" list={ListPessoa} edit={EditPessoa} create={CreatePessoa} icon={PersonIcon} />
+      {/* <Resource className="resource" name="pessoa" list={ListPessoa} edit={EditPessoa} create={CreatePessoa} icon={PersonIcon} /> */}
 
       <Resource className={classes.resource} name="tipo" list={ListTipo} edit={EditTipo} create={CreateTipo} icon={BarChartIcon} />
 

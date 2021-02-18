@@ -1,7 +1,5 @@
 import Home from './pages/Home'
 
-import { AuthProvider } from './Context/AuthContext'
-
 const App = () => {
 
   return (
